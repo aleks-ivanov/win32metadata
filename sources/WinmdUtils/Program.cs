@@ -247,12 +247,12 @@ namespace WinmdUtilsProgram
 
                 if (type.Kind == TypeKind.Enum || (type.Kind == TypeKind.Class && type.Name == "Apis"))
                 {
-                    foreach (var field in type.GetFields())
+                    foreach (var field in type.GetFields(options: GetMemberOptions.IgnoreInheritedMembers))
                     {
-                        if (field.Name == "value__")
-                        {
-                            continue;
-                        }
+                        //if (field.Name == "value__")
+                        //{
+                        //    continue;
+                        //}
 
                         if (!nameToOwner.TryGetValue(field.Name, out var owners))
                         {
@@ -267,7 +267,7 @@ namespace WinmdUtilsProgram
                             if (owners.Count > 1)
                             {
                                 console.Out.Write($"  Showing fields for {type.FullName}:\r\n");
-                                foreach (var f in type.GetFields())
+                                foreach (var f in type.GetFields(options: GetMemberOptions.IgnoreInheritedMembers))
                                 {
                                     console.Out.Write($"    {f.FullName} = {f.GetConstantValue()}:\r\n");
                                 }
