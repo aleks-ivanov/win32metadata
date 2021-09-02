@@ -42,6 +42,6 @@ jobs:
       targetType: inline
       script: |
         dotnet --info
-        .\scripts\TestWinmdBinary.ps1 .\BaselineWinmd\Windows.Win32.test.winmd
+        .\scripts\TestWinmdBinary.ps1 .\scripts\BaselineWinmd\Windows.Win32.test.winmd
       pwsh: true
 
