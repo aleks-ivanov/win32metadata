@@ -260,7 +260,19 @@ namespace WinmdUtilsProgram
                             nameToOwner[field.Name] = owners;
                         }
 
-                        owners.Add(type.FullName);
+                        if (owners.Count < 5)
+                        {
+                            owners.Add(type.FullName);
+
+                            if (owners.Count > 1)
+                            {
+                                console.Out.Write($"  Showing fields for {type.FullName}:\r\n");
+                                foreach (var f in type.GetFields())
+                                {
+                                    console.Out.Write($"    {f.FullName} = {f.GetConstantValue()}:\r\n");
+                                }
+                            }
+                        }
                     }
                 }
             }
