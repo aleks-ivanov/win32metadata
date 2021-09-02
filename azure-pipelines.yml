@@ -23,7 +23,7 @@ jobs:
     displayName: ⚙ Install .NET SDK
     inputs:
       packageType: sdk
-      useGlobalJson: true
+      version: 5.0.x
 
   - task: PowerShell@2
     displayName: Set build version
